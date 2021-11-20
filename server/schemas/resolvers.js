@@ -1,10 +1,10 @@
 const { Class } = require('../models');
-const User = require('../models/User')
+const {User, Book} = require('../models');
 
 const resolvers = {
   Query: {
-    me: async () => {
-
+    me: async (parent, {userId}) => {
+      return await User.findOne({_id:userId});
     }    
   },
 
