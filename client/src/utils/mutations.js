@@ -30,12 +30,14 @@ export const ADD_USER = gql`
   }
 `;
 
-export const ADD_SKILL = gql`
-  mutation addSkill($profileId: ID!, $skill: String!) {
-    addSkill(profileId: $profileId, skill: $skill) {
+export const SAVE_BOOK = gql`
+  mutation saveBook($bookData: Bookinfo) {
+    addSkill(bookData: $bookData) {
       _id
-      name
-      skills
+      username
+      email
+      bookCount
+      savedBooks
     }
   }
 `;
