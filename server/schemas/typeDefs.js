@@ -3,18 +3,41 @@ const { gql } = require('apollo-server-express');
 const typeDefs = gql`
   type User {
     _id: ID
-    name: String
-    building: String
-    creditHours: Int
+    username: String
+    email: String
+    bookCount: Int
+    savedBooks: [Book]
+  }
+  type Book {
+    bookId: String
+    authors: [String]
+    description: String
+    title: String
+    image: String
+    link: String
   }
 
+  type Auth {
+    token: ID
+    user: User
+  }
+  input Bookinfo{
+    authors:[String]
+    description:String
+    title: String
+    bookId: ID
+    image: String
+    link: String
+  }
   type Query {
-    classes: [Class]
+    me:User
   }
 
   type Mutation {
-    # Set the required fields for new schools
-    addSchool(name: String!, location: String!, studentCount: Int!): School
+    login(email:String, password:String): Auth
+    addUser(username:String, email:String, password:String): Auth
+    saveBook(bookData:Bookinfo): User
+    removeBook(bookId:bookId): User
   }
 `;
 
