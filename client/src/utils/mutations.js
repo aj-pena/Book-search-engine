@@ -15,13 +15,16 @@ export const LOGIN_USER = gql`
   }
 `;
 
-export const ADD_PROFILE = gql`
-  mutation addProfile($name: String!, $email: String!, $password: String!) {
-    addProfile(name: $name, email: $email, password: $password) {
+export const ADD_USER = gql`
+  mutation addUser($name: String!, $email: String!, $password: String!) {
+    addUser(name: $name, email: $email, password: $password) {
       token
-      profile {
+      user {
         _id
-        name
+        username
+        email
+        bookCount
+        savedBooks
       }
     }
   }
