@@ -1,4 +1,4 @@
-import React, { useState, } from 'react';
+import React from 'react';
 import { Jumbotron, Container, CardColumns, Card, Button } from 'react-bootstrap';
 import { useQuery, useMutation } from '@apollo/client';
 // import { getMe, deleteBook } from '../utils/API';
@@ -8,17 +8,18 @@ import  GET_ME  from '../utils/queries';
 import { REMOVE_BOOK } from '../utils/mutations';
 
 const SavedBooks = () => {
-  const [userData, setUserData] = useState({});
+  // const [userData, setUserData] = useState({});
   
   const { loading, data } = useQuery(GET_ME);
-  const userQueryData = data?.user || {username:"Andres", savedBooks: []};
+  const userData = data?.user || [];
   
+
   const [removeBook, { error }] = useMutation(REMOVE_BOOK);
  
   // use this to determine if `useEffect()` hook needs to run again
   const userDataLength = Object.keys(userData).length;
 
-  
+    
     // const getUserData = async () => {
     //   try {
     //     const token = Auth.loggedIn() ? Auth.getToken() : null;
@@ -84,7 +85,7 @@ const SavedBooks = () => {
           <h1>Viewing saved books!</h1>
         </Container>
       </Jumbotron>
-      <Container>
+            <Container>
         <h2>
           {userData.savedBooks.length
             ? `Viewing ${userData.savedBooks.length} saved ${userData.savedBooks.length === 1 ? 'book' : 'books'}:`
