@@ -42,8 +42,8 @@ const SavedBooks = () => {
     // };
 
     // getUserData();
-    const getUserData = () => {setUserData(userQueryData)};
-    getUserData();
+    // const getUserData = () => {setUserData(userQueryData)};
+    // getUserData();
 
   // create function that accepts the book's mongo _id value as param and deletes the book from the database
   const handleDeleteBook = async (bookId) => {
@@ -65,7 +65,7 @@ const SavedBooks = () => {
       }
 
       const updatedUser = await response.json();
-      setUserData(updatedUser);
+      // setUserData(updatedUser);
       // upon success, remove book's id from localStorage
       removeBookId(bookId);
     } catch (err) {
